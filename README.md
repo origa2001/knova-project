@@ -4,7 +4,7 @@ Knova DevOps/Infrastructure Engineer Exercise
 This folder contains my work for the Knova assessment.
 
 Assumptions
-- Working path: knova-exercise at repository root: /Users/origa/Desktop/DevOps Stuff/US-Mobile-project/knova-exercise
+
 - Short timebox: focus on automation, structure, and documentation rather than fully productionized delivery.
 
 Plan (high level)
