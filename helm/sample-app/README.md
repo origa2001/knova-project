@@ -1,6 +1,6 @@
 Helm chart for sample-app
 
-To test locally (Option B) you can use either `minikube`, `kind`, or any local Kubernetes cluster.
+To test locally you can use either `minikube`, `kind`, or any local Kubernetes cluster.
 
 Quick Local Flow (minikube):
 1. Start minikube: `minikube start --driver=docker`
