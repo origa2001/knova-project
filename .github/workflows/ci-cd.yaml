@@ -49,8 +49,8 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
-          context: ./sample-app
-          file: Dockerfile
+          context: .
+          file: ./sample-app/Dockerfile
           push: true
           tags: ghcr.io/${{ steps.set-lower.outputs.repo }}:latest
 
