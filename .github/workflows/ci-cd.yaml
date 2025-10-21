@@ -43,7 +43,7 @@ jobs:
           context: ./sample-app
           file: Dockerfile
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/${{ github.repository }}:latest
+          tags: ghcr.io/${{ toLower(github.repository) }}:latest
 
   deploy-dev:
     name: Deploy to cluster (dev)
@@ -77,7 +77,7 @@ jobs:
           KUBECONFIG: ${{ env.KUBECONFIG }}
         run: |
           helm upgrade --install sample-app helm/sample-app -n sample-app --create-namespace \
-            --set image.repository=ghcr.io/${{ github.repository_owner }}/${{ github.repository }},image.tag=latest
+            --set image.repository=ghcr.io/${{ toLower(github.repository) }},image.tag=latest
 
       - name: Run smoke test
         env:
@@ -120,7 +120,7 @@ jobs:
           KUBECONFIG: ${{ env.KUBECONFIG }}
         run: |
           helm upgrade --install sample-app helm/sample-app -n sample-app --create-namespace \
-            --set image.repository=ghcr.io/${{ github.repository_owner }}/${{ github.repository }},image.tag=latest
+            --set image.repository=ghcr.io/${{ toLower(github.repository) }},image.tag=latest
 
       - name: Run smoke test (prod)
         env:
