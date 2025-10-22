@@ -75,3 +75,21 @@ variable "create_rds" {
   type        = bool
   default     = true
 }
+
+variable "create_eks" {
+  description = "Whether to create an EKS cluster (set false for local/minikube demos)"
+  type        = bool
+  default     = false
+}
+
+variable "eks_cluster_name" {
+  description = "Name for the EKS cluster (if create_eks = true)"
+  type        = string
+  default     = "knova-eks"
+}
+
+variable "eks_node_group_desired_capacity" {
+  description = "Desired capacity for managed node group"
+  type        = number
+  default     = 1
+}
