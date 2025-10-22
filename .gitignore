@@ -1,3 +1,84 @@
+# Byte-compiled / compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+.Python
+env/
+venv/
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage
+htmlcov/
+.coverage
+.tox/
+.nox/
+.pytest_cache/
+
+# Python virtualenv
+.env
+.venv
+env/
+venv/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Docker
+*.log
+docker-compose.override.yml
+docker-compose.*.yml
+**/docker-compose.*.yml
+sample-app/.dockerignore
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Local Terraform variables and creds
+terraform.tfvars
+*.tfvars
+*.tfvars.json
+
+# AWS credentials and kubeconfig
+.aws/
+.aws/credentials
+.aws/config
+kubeconfig
+kubeconfig_*
+.kube/
+
+# Editor files
+*.swp
+*.swo
+*.swn
+.idea/
+
+# Logs
+*.log
+
+# Secrets
+secrets.yaml
+*.pem
+*.key
 # Local .terraform directories
 .terraform/
 

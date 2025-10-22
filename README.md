@@ -1,3 +1,17 @@
+knova-project
+================
+
+Minimal sample project for the Knova assessment. Contains a small Flask sample app, Helm chart, GitHub Actions CI for building/pushing images and a Terraform directory for AWS infra (VPC, RDS, EKS).
+
+Quick start
+-----------
+- See `terraform/` for infra provisioning. Use `create_eks=false` to provision networking + RDS first.
+- See `helm/sample-app` for the Helm chart used to deploy the Flask app.
+- CI workflow is in `.github/workflows/ci-cd.yaml`.
+
+Notes
+-----
+- This repository contains Terraform state-sensitive files; avoid committing secrets or `terraform.tfstate`.
 
 Knova DevOps/Infrastructure Engineer Exercise
 
@@ -65,4 +79,22 @@ Notes & tradeoffs
 - This workspace intentionally uses `minikube` for local, cost-free Kubernetes testing instead of provisioning EKS (to avoid cloud costs).
 - The Terraform in `terraform/` currently provisions VPC, subnets, bastion, and RDS but does not create an EKS cluster — you can either use local minikube for demos or I can add EKS Terraform later if you want a fully-cloud deployment.
 - Do not use default values for `allow_ssh_cidr` or `key_name` in production. Lock SSH access to a known CIDR and provide a valid EC2 key pair name.
+
+Enabling EKS via Terraform
+1. By default EKS is disabled. To create an EKS cluster with Terraform set `create_eks = true`.
+2. Example (run from `terraform/`):
+
+```bash
+terraform init
+terraform plan -var='create_eks=true' -var='eks_cluster_name=knova-eks'
+terraform apply -var='create_eks=true' -var='eks_cluster_name=knova-eks'
+```
+
+3. CI: to allow GitHub Actions to deploy to EKS, add these repository secrets (or use OIDC):
+- `AWS_ACCESS_KEY_ID`
+- `AWS_SECRET_ACCESS_KEY`
+- `AWS_REGION`
+- `EKS_CLUSTER_NAME`
+
+The workflow will prefer `KUBECONFIG` if present, else will try EKS via these AWS secrets.
 
